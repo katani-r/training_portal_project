@@ -1,0 +1,164 @@
+/* 全体の基本スタイル */
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* タイトルスタイル */
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+
+}
+
+h1 {
+    font-size: 45px; /* サイズを大きくして視認性を向上 */
+}
+
+/* 日付表示のスタイル */
+.date-display {
+    font-size: 20px;
+    padding: 0px 10px;
+}
+
+/* プロフィールセクション */
+
+.profile-section {
+    display: flex; /* 要素を横に並べる */
+    align-items: flex-start; /* アイテムを上端に揃える */
+    margin-top: 20px; /* 上部に余白を設ける */
+    margin-left: 90px; /* 例として200px右に移動 */
+}
+
+.left-column {
+    display: flex; /* 画像とフォームを含むコンテナもフレックスボックスにする */
+    flex-direction: column; /* 子要素を縦に並べる */
+    margin-left: 40px;
+}
+
+
+.profile-picture {
+    width: 250px; /* 画像の幅を150pxに設定 */
+    height: 250px; /* 画像の高さを150pxに設定 */
+    border-radius: 50%; /* 画像を円形にする */
+    margin-bottom: 30px; /* 画像とフォームの間に余白を設ける */
+    object-fit: cover; /* 画像をフレームに合わせてトリミング */
+    
+}
+
+
+
+.profile-details {
+    font-size: 16px; /* 全体のフォントサイズを16pxに設定 */
+}
+
+.profile-details h2 {
+    font-size: 34px; /* プロフィール見出しのサイズを24pxに設定 */
+}
+
+.profile-details p {
+    margin: 5px 0; /* 段落の上下のマージンを5pxに設定 */
+    font-size: 24px; /* 段落のフォントサイズを18pxに設定 */
+}
+
+.profile-details a {
+    margin-left: 20px; /* リンクの左のマージンを10pxに設定 */
+    font-size: 20px; /* リンクのフォントサイズを16pxに設定 */
+    text-decoration: none; /* リンクの下線を削除 */
+}
+
+.profile-details a:hover {
+    text-decoration: underline; /* ホバー時に下線を表示 */
+}
+
+
+/* メニューとテーブルを含むコンテナのスタイリング */
+.menu-container {
+    width: 90%; /* コンテナの幅を設定 */
+    margin: 20px auto; /* 上下の余白を20px、左右のマージンを自動に設定して中央配置 */
+    padding: 0 15px; /* コンテナの内側の余白を左右に15px設定 */
+}
+
+/* トレーニングセットメニューの見出しスタイル */
+.h2-training {
+    font-size: 34px; /* 見出しのフォントサイズ */
+    text-align: center; /* 中央揃え */
+}
+
+/* サブ見出しのスタイリング */
+.h3-menu {
+    font-size: 26px; /* サブ見出しのフォントサイズ */
+    text-align: left; /* 左揃え */
+    margin: 0; /* マージンをリセット */
+}
+
+/* テーブルを中央に配置するためのコンテナスタイリング */
+.training-table-container {
+    margin: 0; /* マージンをリセット */
+}
+
+/* テーブルのスタイリング */
+.training-table {
+    width: 100%; /* テーブルの全体的な幅を100%に設定 */
+    table-layout: fixed; /* 列幅を固定に設定 */
+    border-collapse: collapse; /* ボーダーのスタイルを統合 */
+}
+
+/* テーブルのスタイリング */
+.training-table th, .training-table td {
+    font-size: 16px; /* テーブル内の文字サイズ */
+    text-align: left; /* 左揃え */
+    padding: 8px; /* セルの内側の余白 */
+    border: 1px solid #ddd; /* セルのボーダー設定 */
+}
+
+
+/* 列ごとの幅を固定 */
+.training-table th:nth-child(1),
+.training-table td:nth-child(1) {
+    width: 20%; /* 例：メニュー名の列の幅を20%に設定 */
+}
+
+.training-table th:nth-child(2),
+.training-table td:nth-child(2) {
+    width: 30%; /* 例：詳細の列の幅を30%に設定 */
+}
+
+.training-table th:nth-child(3),
+.training-table td:nth-child(3),
+.training-table th:nth-child(4),
+.training-table td:nth-child(4),
+.training-table th:nth-child(5),
+.training-table td:nth-child(5) {
+    width: 10%; /* トレーニングタイプ、対象部位、場所の列の幅を10%に設定 */
+}
+
+.training-table th:nth-child(6),
+.training-table td:nth-child(6),
+.training-table th:nth-child(7),
+.training-table td:nth-child(7) {
+    width: 15%; /* 動画URLとサイトURLの列の幅を15%に設定 */
+}
+
+
+.training-table th {
+    background-color: #f4f4f4;
+}
+
+.training-table td {
+    word-wrap: break-word; /* 長い単語を折り返す */
+    overflow-wrap: break-word; /* 長い単語がオーバーフローした場合に折り返す */
+}
+
+/* リンクのスタイル */
+.training-link {
+    font-size: 14px; /* リンクのフォントサイズ */
+    color: blue; /* リンクの色 */
+    text-decoration: none; /* 下線なし */
+    display: inline-block; /* リンクをインラインブロック要素として扱う */
+    max-width: 100%; /* 最大幅をセルの幅に制限 */
+}
+
+.training-link:hover {
+    text-decoration: underline; /* ホバー時に下線を表示 */
+}

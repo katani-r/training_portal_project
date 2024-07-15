@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+{% if messages %}
+  {% for message in messages %}
+    <div>{{ message.message }}</div>
+  {% endfor %}
+{% endif %}
+<div class="header">
+    <h1>ホーム画面</h1>
+    <div class="date-display">{{ now|date:"Y年 m月 d日 l" }}</div>
+</div>
+<div class="profile-section">
+    <div class="left-column">
+        <div>
+            {% if profile.picture %}
+                <img class="profile-picture" src="{{ profile.picture.url }}">
+            {% else %}
+                <img class="profile-picture" src="/media/picture/default.png">
+            {% endif %}
+        </div>
+        <form class="profile-form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ picture_form.as_p }}
+        <input type="submit" value="更新">
+        </form>
+    </div>
+    <div class="profile-details">
+        <h2>あなたのプロフィール</h2>
+        <p>名前：{{ profile.username }}</p>
+        <div>
+            {% if goals %}
+                {% if goals.name %}
+                    <p>目標：{{ goals.name }}<a href="{% url 'training_menus:goals_update' %}">編集</a></p>
+                {% else %}
+                    <p>目標：目標が設定されていません<a href="{% url 'training_menus:goals_update' %}">設定する</a></p>
+                {% endif %}
+            {% else %}
+                <p>目標：目標が設定されていません<a href="{% url 'training_menus:goals_update' %}">設定する</a></p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<div>
+    <h2 class="h2-training">トレーニングセットメニュー</h2>
+    <div class="menu-container">
+        <h3 class="h3-menu">フリーメニュー</h3>
+        <div class="training-table-container">
+            <table class="training-table">
+                <thead>
+                <tr>
+                    <th>メニュー名</th>
+                    <th>詳細</th>
+                    <th>タイプ</th>
+                    <th>対象部位</th>
+                    <th>場所</th>
+                    <th>動画URL</th>
+                    <th>サイトURL</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for free in day_of_weeks_free %}
+                <tr>
+                    <td>{{ free.menu_name }}</td>
+                    <td>{{ free.menu_details }}</td>
+                    <td>{{ free.training_type.name }}</td>
+                    <td>{{ free.training_part.name }}</td>
+                    <td>{{ free.training_location.name }}</td>
+                    <td><a href="{{ free.reference_video_url }}" target="_blank">{{ free.reference_video_url|truncatechars:30 }}</a></td>
+                    <td><a href="{{ free.reference_site_url }}" target="_blank">{{ free.reference_site_url|truncatechars:30 }}</a></td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            {% if day_of_weeks_free %}
+            {% else %}
+                <p>設定されていません。</p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="menu-container">
+        <h3 class="h3-menu">{{ weekdays_ja }}のメニュー</h3>
+        <div class="training-table-container">
+            <table class="training-table">
+                <thead>
+                <tr>
+                    <th>メニュー名</th>
+                    <th>詳細</th>
+                    <th>タイプ</th>
+                    <th>対象部位</th>
+                    <th>場所</th>
+                    <th>動画URL</th>
+                    <th>サイトURL</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for day_of_week in day_of_weeks %}
+                <tr>
+                    <td>{{ day_of_week.menu_name }}</td>
+                    <td>{{ day_of_week.menu_details }}</td>
+                    <td>{{ day_of_week.training_type.name }}</td>
+                    <td>{{ day_of_week.training_part.name }}</td>
+                    <td>{{ day_of_week.training_location.name }}</td>
+                    <td><a href="{{ day_of_week.reference_video_url }}" target="_blank">{{ day_of_week.reference_video_url|truncatechars:30 }}</a></td>
+                    <td><a href="{{ day_of_week.reference_site_url }}" target="_blank">{{ day_of_week.reference_site_url|truncatechars:30 }}</a></td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            {% if day_of_weeks %}
+            {% else %}
+                <p>この曜日は設定されていません。</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,183 @@
+/* 全体の基本スタイル */
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* タイトルスタイル */
+.page-title {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+
+}
+
+h1 {
+    font-size: 45px; /* サイズを大きくして視認性を向上 */
+}
+
+/* ページ全体を包含するコンテナ */
+.container {
+    width: 100%; /* コンテナの幅をページ全体の幅に設定 */
+    max-width: 1700px; /* コンテナの最大幅を1200pxに設定 */
+    margin: 0 auto; /* 左右のマージンを自動で調整し、中央寄せ */
+}
+
+
+
+
+/* フォーム行のスタイリング */
+.form-row {
+    display: flex; /* フレックスボックスモデルを使用 */
+    flex-wrap: wrap; /* 行が満杯になると折り返す */
+}
+
+/* フォームフィールドのスタイリング */
+.form-field {
+    margin: 10px; /* すべての方向に10pxのマージンを設定 */
+}
+
+/* 各フォームフィールドの個別のマージンを設定する例 */
+.form-field.day-of-week {
+    margin: 5px 15px 5px 0; /* 上: 5px, 右: 15px, 下: 5px, 左: 0 */
+}
+
+.form-field.menu-name {
+    margin: 10px 10px 10px 5px; /* 上: 10px, 右: 10px, 下: 10px, 左: 5px */
+}
+
+.form-field.training-type {
+    margin: 15px 5px 10px 10px; /* 上: 15px, 右: 5px, 下: 10px, 左: 10px */
+}
+
+/* フォームアクション（検索ボタンとクリアボタン）のスタイリング */
+.form-actions {
+    margin: 0px 0px 10px 0; /* アクションボタンの上に20pxのマージンを設ける */
+}
+
+
+
+/* リンクコンテナのスタイリング */
+.link-container {
+    display: flex; /* フレックスボックスモデルを使用 */
+    align-items: center; /* 子要素を中央揃え */
+    padding: 10px; /* 内側にパディングを設ける */
+}
+
+/* リンクスタイル */
+.link-container p {
+    margin: 5px 5px; /* 左右に10pxのマージンを設定 */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* テーブルを中央に配置するためのコンテナスタイリング */
+.training-table-container {
+    margin: 0 auto; /* 中央配置 */
+    width: 100%; /* コンテナの幅を80%に設定 */
+}
+
+/* テーブルのスタイリング */
+.training-table {
+    width: 100%; /* テーブルの幅をコンテナの100%に設定 */
+    table-layout: fixed; /* 列幅を固定に設定 */
+    border-collapse: collapse; /* ボーダーのスタイルを統合 */
+}
+
+/* テーブルのスタイリング */
+.training-table th, .training-table td {
+    font-size: 16px;
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #ddd;
+    overflow: hidden; /* コンテンツがセルからはみ出す場合に隠す */
+}
+
+
+/* 列ごとの幅を固定 */
+.training-table th:nth-child(1),
+.training-table td:nth-child(1) {
+    width: 5%; /* '選択'のチェックボックスの列 */
+}
+
+.training-table th:nth-child(2),
+.training-table td:nth-child(2) {
+    width: 5%; /* '曜日'の列 */
+}
+
+.training-table th:nth-child(3),
+.training-table td:nth-child(3) {
+    width: 10%; /* 'メニュー名'の列 */
+}
+
+.training-table th:nth-child(4),
+.training-table td:nth-child(4) {
+    width: 15%; /* '詳細'の列 */
+}
+
+.training-table th:nth-child(5),
+.training-table td:nth-child(5),
+.training-table th:nth-child(6),
+.training-table td:nth-child(6),
+.training-table th:nth-child(7),
+.training-table td:nth-child(7) {
+    width: 8%; /* 'タイプ'、'対象部位'、'場所'の列 */
+}
+
+.training-table th:nth-child(8),
+.training-table td:nth-child(8),
+.training-table th:nth-child(9),
+.training-table td:nth-child(9) {
+    width: 10%; /* '動画URL'と'サイトURL'の列 */
+}
+
+.training-table th:nth-child(10),
+.training-table td:nth-child(10) {
+    width: 8%; /* '最終実施日'の列 */
+}
+
+.training-table th:nth-child(11),
+.training-table td:nth-child(11),
+.training-table th:nth-child(12),
+.training-table td:nth-child(12) {
+    width: 8%; /* '編集'と'削除'の列 */
+}
+
+
+
+.training-table th {
+    background-color: #f4f4f4;
+}
+
+.training-table td {
+    word-wrap: break-word; /* 長い単語を折り返す */
+    overflow-wrap: break-word; /* 長い単語がオーバーフローした場合に折り返す */
+}
+
+/* リンクのスタイル */
+.training-link {
+    font-size: 14px; /* リンクのフォントサイズ */
+    color: blue; /* リンクの色 */
+    text-decoration: none; /* 下線なし */
+    display: inline-block; /* リンクをインラインブロック要素として扱う */
+    max-width: 100%; /* 最大幅をセルの幅に制限 */
+}
+
+.training-link:hover {
+    text-decoration: underline; /* ホバー時に下線を表示 */
+}
+
+
+
+/* 更新ボタンスタイル */
+.update-button {
+    margin: 10px 0px; /* 左右に10pxのマージンを設定 */
+}

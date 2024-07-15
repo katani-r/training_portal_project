@@ -1,0 +1,64 @@
+/* 全体の基本スタイル */
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* タイトルスタイル */
+.page-title {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+
+}
+
+h1 {
+    font-size: 45px; /* サイズを大きくして視認性を向上 */
+}
+
+.container {
+    width: 100%; /* コンテナの幅をページ全体の幅に設定 */
+    max-width: 1800px; /* コンテナの最大幅を1200pxに設定 */
+    margin: 0 auto; /* 左右のマージンを自動で調整し、中央寄せ */
+}
+
+
+.training-update-container {
+    position: absolute; /* 絶対位置指定 */
+    top: 40%; /* 上から40%の位置に配置 */
+    left: 50%; /* 左から50%の位置に配置 */
+    transform: translate(-50%, -50%); /* 中心を正確に位置合わせ */
+    width: 100%; /* コンテナの幅を90%に */
+    max-width: 400px; /* 最大幅を400pxに設定 */
+    padding: 20px; /* 内側に20pxのパディング */
+    font-size: 20px; /* サイズを大きくして視認性を向上 */
+
+}
+
+
+.link-back {
+    display: block; /* リンクをブロック表示 */
+    margin-top: 20px; /* 上の余白 */
+  }
+
+/* リンクコンテナのスタイリング */
+.link-container {
+    display: flex; /* フレックスボックスモデルを使用 */
+    align-items: center; /* 子要素を中央揃え */
+    padding: 10px; /* 内側にパディングを設ける */
+}
+
+/* リンクスタイル */
+.link-container p {
+    margin: 5px 20px; /* 左右に10pxのマージンを設定 */
+}
+
+
+.training-update-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* 子要素を右端に寄せる */
+}
+
+.submit-button {
+    margin-top: 10px; /* ボタンの上に適当な余白を設定 */
+}

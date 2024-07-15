@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/training_list.css' %}">
+{% if messages %}
+  {% for message in messages %}
+    <div>{{ message.message }}</div>
+  {% endfor %}
+{% endif %}
+<h1 class="page-title">トレーニングメニュー一覧</h1>
+<div class="container">
+  <div class="search-form-container">
+    <form method="get" action="{% url 'training_menus:training_list' %}" class="search-form">
+      <div class="form-row">
+        <div class="form-field">
+          {{ form.day_of_week.label_tag }}
+          {{ form.day_of_week }}
+        </div>
+        <div class="form-field">
+          {{ form.menu_name.label_tag }}
+          {{ form.menu_name }}
+        </div>
+        <div class="form-field">
+          {{ form.training_type_name.label_tag }}
+          {{ form.training_type_name }}
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          {{ form.training_part_name.label_tag }}
+          {{ form.training_part_name }}
+        </div>
+        <div class="form-field">
+          {{ form.training_location_name.label_tag }}
+          {{ form.training_location_name }}
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field checkbox-field">
+          {{ form.current_only }}
+          {{ form.current_only.label_tag }}
+        </div>
+      </div>
+      <div class="form-actions">
+        <input type="submit" value="検索" class="search-button"/>
+      </div>
+    </form>
+    <form method="get" action="{% url 'training_menus:training_list' %}">
+      <p><input type="submit" value="クリア" class="clear-button"/></p>
+    </form>
+  </div>
+  <div class="link-container">
+    <p><a href="{% url 'training_menus:training_add' %}" class="add-menu-link">メニュー追加</a></p>
+    <p><a href="{% url 'training_menus:training_settings' %}" class="settings-link">トレーニング設定</a></p>
+  </div>
+  <div class="training-table-container">
+    <form method="post">
+        {% csrf_token %}
+        <table class="training-table">
+            <thead>
+            <tr>
+                <th>選択</th>
+                <th>曜日</th>
+                <th>メニュー名</th>
+                <th>詳細</th>
+                <th>タイプ</th>
+                <th>対象部位</th>
+                <th>場所</th>
+                <th>動画URL</th>
+                <th>サイトURL</th>
+                <th>最終実施日</th>
+                <th>編集</th>
+                <th>削除</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for object in object_list %}
+            <tr>
+                <td><input type="checkbox" name="is_current_{{ object.id }}" value="{{ object.id }}" {% if object.is_current %} checked {% endif %}></td>
+                <td>{{ object.get_day_of_week_display }}</td>
+                <td>{{ object.menu_name }}</td>
+                <td>{{ object.menu_details }}</td>
+                <td>{{ object.training_type.name }}</td>
+                <td>{{ object.training_part.name }}</td>
+                <td>{{ object.training_location.name }}</td>
+                <td><a href="{{ object.reference_video_url }}" target="_blank">{{ object.reference_video_url|truncatechars:30 }}</a></td>
+                <td><a href="{{ object.reference_site_url }}" target="_blank">{{ object.reference_site_url|truncatechars:30 }}</a></td>
+                <td>{{ object.last_performed_date }}</td>
+                <td><a href="{% url 'training_menus:training_update' object.id %}" class="edit-link">編集</a></td>
+                <td><a href="{% url 'training_menus:training_delete' object.id %}" class="delete-link">削除</a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <button type="submit" class="update-button">更新</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

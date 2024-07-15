@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/user_login.css' %}">
+<div class="login-container">
+    <h1 class="page-title">ログイン画面</h1>
+    <form method="POST" class="login-form">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.username.label_tag }}
+            {{ form.username }}
+        </div>
+        <div class="form-group">
+            {{ form.password.label_tag }}
+            {{ form.password }}
+        </div>
+        <input type="hidden" name="next" value="{{ request.GET.next }}">
+        <input type="submit" value="ログイン" class="login-button">
+    </form>
+</div>
+{% endblock %}

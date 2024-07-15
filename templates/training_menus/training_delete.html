@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/training_delete.css' %}">
+{% if messages %}
+  {% for message in messages %}
+    <div>{{ message.message }}</div>
+  {% endfor %}
+{% endif %}
+<h1 class="page-title">トレーニングメニュー削除画面</h1>
+<div class="container">
+  <div class="link-container">
+    <p><a href="{% url 'training_menus:training_list' %}" class="link-back">戻る</a></p>
+  </div>
+  <div class="training-container">
+    <div class="training-delete-container">
+      <form method="post" class="training-delete-form">
+        {% csrf_token %}
+        <p>以下を削除してよろしいでしょうか？</p>
+        <input type="submit" value="削除する">
+      </form>
+    </div>
+    <table class="training-table">
+        <thead>
+        <tr>
+            <th>曜日</th>
+            <th>メニュー名</th>
+            <th>詳細</th>
+            <th>タイプ</th>
+            <th>対象部位</th>
+            <th>場所</th>
+            <th>動画URL</th>
+            <th>サイトURL</th>
+            <th>最終実施日</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{ object.get_day_of_week_display }}</td>
+            <td>{{ object.menu_name }}</td>
+            <td>{{ object.menu_details }}</td>
+            <td>{{ object.training_type.name }}</td>
+            <td>{{ object.training_part.name }}</td>
+            <td>{{ object.training_location.name }}</td>
+            <td><a href="{{ object.reference_video_url }}" target="_blank">{{ object.reference_video_url|truncatechars:30 }}</a></td>
+            <td><a href="{{ object.reference_site_url }}" target="_blank">{{ object.reference_site_url|truncatechars:30 }}</a></td>
+            <td>{{ object.last_performed_date }}</td>
+        </tr>
+        </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

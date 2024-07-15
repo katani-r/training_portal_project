@@ -1,0 +1,30 @@
+/* 全体の基本スタイル */
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* タイトルスタイル */
+.page-title {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+
+}
+
+h1 {
+    font-size: 45px; /* サイズを大きくして視認性を向上 */
+}
+
+
+.login-container {
+    position: absolute; /* 絶対位置指定 */
+    top: 40%; /* 上から40%の位置に配置 */
+    left: 50%; /* 左から50%の位置に配置 */
+    transform: translate(-50%, -50%); /* 中心を正確に位置合わせ */
+    width: 90%; /* コンテナの幅を90%に */
+    max-width: 400px; /* 最大幅を400pxに設定 */
+    padding: 20px; /* 内側に20pxのパディング */
+    background-color: #f8f8f8; /* 背景色 */
+    border: 1px solid #eaeaea; /* 境界線 */
+    border-radius: 8px; /* 角の丸み */
+}

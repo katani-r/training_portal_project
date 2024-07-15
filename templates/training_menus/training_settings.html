@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/training_settings.css' %}">
+{% if messages %}
+  {% for message in messages %}
+    <div>{{ message.message }}</div>
+  {% endfor %}
+{% endif %}
+<h1 class="page-title">トレーニング設定画面</h1>
+<div class="container">
+  <div class="link-container">
+    <p><a href="{% url 'training_menus:training_list' %}" class="link-back">トレーニングメニュー一覧へ</a></p>
+    <p><a href="{% url 'training_menus:training_add' %}" class="link-back">メニュー追加へ</a></p>
+  </div>
+  <div class="settings-container">
+    <div class="settings-section">
+      <form method="post" class="settings-form">
+        {% csrf_token %}
+        <div class="form-field">
+          {{ type_form.name.label_tag }}
+          <div class="input-container">
+            {{ type_form.name }}
+            <input type="submit" value="タイプ追加" name="submit_type" class="submit-button button-margin">
+          </div>
+        </div>
+      </form>
+      <table class="settings-table">
+          <thead>
+          <tr>
+            <th>トレーニングタイプ名</th>
+            <th>編集</th>
+            <th>削除</th>
+          </tr>
+          </thead>
+          <tbody>
+          {% for object in type %}
+          <tr>
+              <td>{{ object.name }}</td>
+              <td><a href="{% url 'training_menus:type_update' object.id %}" class="edit-link">編集</a></td>
+              <td><a href="{% url 'training_menus:type_delete' object.id %}" class="delete-link">削除</a></td>
+          </tr>
+          {% endfor %}
+          </tbody>
+      </table>
+    </div>
+
+    <div class="settings-section">
+      <form method="post" class="settings-form">
+        {% csrf_token %}
+        <div class="form-field">
+          {{ part_form.name.label_tag }}
+          <div class="input-container">
+            {{ part_form.name }}
+            <input type="submit" value="部位追加" name="submit_part" class="submit-button button-margin">
+          </div>
+        </div>
+      </form>
+      <table class="settings-table">
+          <thead>
+          <tr>
+            <th>トレーニング部位名</th>
+            <th>編集</th>
+            <th>削除</th>
+          </tr>
+          </thead>
+          <tbody>
+          {% for object in part %}
+          <tr>
+              <td>{{ object.name }}</td>
+              <td><a href="{% url 'training_menus:part_update' object.id %}" class="edit-link">編集</a></td>
+              <td><a href="{% url 'training_menus:part_delete' object.id %}" class="delete-link">削除</a></td>
+          </tr>
+          {% endfor %}
+          </tbody>
+      </table>
+    </div>
+
+    <div class="settings-section">
+      <form method="post" class="settings-form">
+        {% csrf_token %}
+        <div class="form-field">
+          {{ location_form.name.label_tag }}
+          <div class="input-container">
+            {{ location_form.name }}
+            <input type="submit" value="場所追加" name="submit_location" class="submit-button button-margin">
+          </div>
+        </div>
+      </form>
+      <table class="settings-table">
+          <thead>
+          <tr>
+            <th>トレーニング場所名</th>
+            <th>編集</th>
+            <th>削除</th>
+          </tr>
+          </thead>
+          <tbody>
+          {% for object in location %}
+          <tr>
+              <td>{{ object.name }}</td>
+              <td><a href="{% url 'training_menus:location_update' object.id %}" class="edit-link">編集</a></td>
+              <td><a href="{% url 'training_menus:location_delete' object.id %}" class="delete-link">削除</a></td>
+          </tr>
+          {% endfor %}
+          </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

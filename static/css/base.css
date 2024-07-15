@@ -1,0 +1,33 @@
+/* 基本設定 */
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #333366; /* ダークブルー */
+    background-color: #ffffff; /* 背景色 ホワイト */
+}
+
+/* ナビゲーションバーのスタイリング */
+.navbar {
+    background-color: #ffffff; /* 背景色 ホワイト */
+    border-bottom: 2px solid #eeeeee; /* ソフトグレーのボーダー */
+}
+
+.navbar-brand {
+    color: #007bff; /* 明るいブルー */
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* ホバーエフェクト */
+.navbar-brand:hover {
+    color: #0056b3; /* 濃いブルーでアクセント */
+}
+
+/* トレーニングメニューリンク */
+.nav-link {
+    color: #666666; /* ソフトグレー */
+    font-size: 16px;
+}
+
+.nav-link:hover {
+    color: #333333; /* ダークグレー */
+}

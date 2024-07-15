@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/training_update.css' %}">
+{% if messages %}
+  {% for message in messages %}
+    <div>{{ message.message }}</div>
+  {% endfor %}
+{% endif %}
+<h1 class="page-title">トレーニングメニュー編集画面</h1>
+<div class="container">
+  <div class="link-container">
+    <p><a href="{% url 'training_menus:training_list' %}" class="link-back">戻る</a></p>
+  </div>
+  <div class="training-update-container">
+    <form method="post" class="training-update-form">
+      {% csrf_token %}
+      <div class="form-fields">
+        {{ form.as_p }}
+      </div>
+      <input type="submit" value="更新" class="submit-button">
+    </form>
+  </div>
+</div>
+{% endblock %}
