@@ -24,9 +24,9 @@ STATIC_DIR = os.path.join(BASE_DIR, 'static')
 SECRET_KEY = 'django-insecure--vmg49#t+sfv3gu#**i!(*cq^ppd$nnv1b%b5tb8kc#tn7ha15'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '.pythonanywhere.com', 'katani-r.pythonanywhere.com']
 
 
 # Application definition
@@ -136,3 +136,14 @@ AUTH_USER_MODEL = 'accounts.Users'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+
+from django.core.management.utils import get_random_secret_key
+SECRET_KEY = get_random_secret_key()  
+
+try:
+    from .local_settings import *
+except:
+    pass
