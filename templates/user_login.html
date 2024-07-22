@@ -2,6 +2,14 @@
 {% load static %}
 {% block content %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/user_login.css' %}">
+{% if form.non_field_errors %}
+  <div class="alert alert-danger" role="alert">
+    {% for error in form.non_field_errors %}
+      {{ error }}
+    {% endfor %}
+  </div>
+{% endif %}
+<h1 class="page-title">トレーニングポータルアプリ</h1>
 <div class="login-container">
     <h1 class="page-title">ログイン画面</h1>
     <form method="POST" class="login-form">

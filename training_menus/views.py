@@ -101,17 +101,6 @@ class HomeView(LoginRequiredMixin, TemplateView):
         context = self.get_context_data(**kwargs)
         picture_form = forms.PictureUploadForm(request.POST, request.FILES, instance=context['profile'])
 
-        if picture_form.is_valid():
-            user_profile = picture_form.save(commit=False)  
-            if user_profile.picture:  
-                old_picture = Users.objects.get(id=self.request.user.id).picture
-                if old_picture:
-                    old_picture_path = old_picture.path
-                    if os.path.isfile(old_picture_path):
-                        os.remove(old_picture_path)
-            user_profile.save()
-            messages.success(request, '画像を更新しました。')
-
         if 'picture-clear' in request.POST:
             old_picture = Users.objects.get(id=self.request.user.id).picture
             if old_picture:
@@ -120,6 +109,29 @@ class HomeView(LoginRequiredMixin, TemplateView):
                     os.remove(old_picture_path)
                 old_picture.delete()
                 messages.success(request, '画像をクリアしました。')
+            return HttpResponseRedirect(self.get_success_url())
+
+        if picture_form.is_valid():
+            user_profile = picture_form.save(commit=False) 
+            if 'picture' in request.FILES:
+                if user_profile.picture:  
+                    old_picture = Users.objects.get(id=self.request.user.id).picture
+                    if old_picture:
+                        old_picture_path = old_picture.path
+                        if os.path.isfile(old_picture_path):
+                            os.remove(old_picture_path)
+                user_profile.save()
+                messages.success(request, '画像を更新しました。')
+            else:
+                # ファイルが選択されていないがフォームが有効な場合（クリア以外）
+                messages.info(request, '画像ファイルを選択してください。')
+            
+        else:
+            # フォームが無効な場合のエラーメッセージをハンドリング
+            for field in picture_form:
+                for error in field.errors:
+                    messages.error(request, error)
+        
         return HttpResponseRedirect(self.get_success_url())
 
     def get_success_url(self):

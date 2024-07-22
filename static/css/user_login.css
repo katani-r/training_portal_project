@@ -17,7 +17,7 @@ h1 {
 
 
 .login-container {
-    position: absolute; /* 絶対位置指定 */
+    position: fixed; /* 絶対位置指定ではなく、ビューポートに固定 */
     top: 40%; /* 上から40%の位置に配置 */
     left: 50%; /* 左から50%の位置に配置 */
     transform: translate(-50%, -50%); /* 中心を正確に位置合わせ */
