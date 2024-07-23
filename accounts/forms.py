@@ -32,16 +32,20 @@ class RegistForm(forms.ModelForm):
     def clean_password(self):
         password = self.cleaned_data.get('password')
         if password:
+            # ユーザーインスタンスにフォームからのデータを手動で設定する
+            self.instance.email = self.cleaned_data.get('email', self.instance.email)
+            self.instance.username = self.cleaned_data.get('username', self.instance.username)
+
             try:
                 validate_password(password, self.instance)
             except ValidationError as e:
                 # パスワードバリデーションエラーをフォームのエラーに追加
-                raise forms.ValidationError(_("パスワードが基準を満たしていません: ") + str(e))
+                self.add_error('password', e)
         return password
+
     
     def save(self, commit=False):
         user = super().save(commit=False)
-        validate_password(self.cleaned_data['password'], user)
         user.set_password(self.cleaned_data['password'])
         user.save()
         return user

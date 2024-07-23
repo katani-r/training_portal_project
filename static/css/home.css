@@ -162,3 +162,10 @@ h1 {
 .training-link:hover {
     text-decoration: underline; /* ホバー時に下線を表示 */
 }
+
+form.profile-form p a:first-of-type {
+    pointer-events: none; /* リンクのクリックイベントを無効にする */
+    color: grey; /* リンクを灰色にして無効化されているように見せる */
+    text-decoration: none; /* リンクの下線を消す */
+}
+

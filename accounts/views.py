@@ -9,7 +9,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 
 
-
 class RegistUserView(CreateView):
     template_name = 'regist.html'
     form_class = RegistForm

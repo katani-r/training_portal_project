@@ -23,15 +23,12 @@ h1 {
 
 
 .training-update-container {
-    position: fixed; /* 絶対位置指定ではなく、ビューポートに固定 */
-    top: 40%; /* 上から40%の位置に配置 */
-    left: 50%; /* 左から50%の位置に配置 */
-    transform: translate(-50%, -50%); /* 中心を正確に位置合わせ */
+
     width: 100%; /* コンテナの幅を90%に */
     max-width: 400px; /* 最大幅を400pxに設定 */
     padding: 20px; /* 内側に20pxのパディング */
     font-size: 20px; /* サイズを大きくして視認性を向上 */
-
+    margin: 20px auto; /* 上下に40pxのマージンを設定し、自動的に中央揃え */
 }
 
 

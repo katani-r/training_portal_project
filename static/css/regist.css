@@ -18,10 +18,7 @@ h1 {
 
 
 .registration-container {
-    position: fixed; /* 絶対位置指定ではなく、ビューポートに固定 */
-    top: 30%; /* 上から30%の位置に配置 */
-    left: 50%; /* 左から50%の位置に配置 */
-    transform: translate(-50%, -30%); /* 中心を正確に位置合わせ（上下位置を少し上に調整） */
+
     width: auto; /* コンテナの幅を自動に */
     min-width: 300px; /* 最小幅を300pxに設定 */
     max-width: 500px; /* 最大幅を400pxに設定 */
@@ -30,6 +27,7 @@ h1 {
     border: 1px solid #eaeaea; /* 境界線 */
     border-radius: 8px; /* 角の丸み */
     box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* ソフトな影を追加 */
+    margin: 20px auto; /* 上下に40pxのマージンを設定し、自動的に中央揃え */
 }
 
 
